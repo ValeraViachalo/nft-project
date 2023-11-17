@@ -38,5 +38,9 @@
     display: block;
     color: $white;
     @include hoverForLinks($white);
+
+    &--wallet {
+      width: 27vw;
+    }
   }
 }

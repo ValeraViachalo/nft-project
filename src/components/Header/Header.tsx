@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
-import { ScrollContext } from "../../helpers/scrollContext";
-// import { ScrollProvider } from "@/helpers/scrollProvider";
+import { useEffect, useState } from "react";
 import "./Header.scss";
 import Navigation from "./Navigation/Navigation";
+import { motion } from 'framer-motion';
 
 const Header = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -11,9 +10,15 @@ const Header = () => {
     setIsClicked(!isClicked);
   };
 
-  const buttonContent = isClicked ? "SOON" : "CONNECT WALLET";
+  useEffect(() => {
+    setTimeout(() => {
+      if(isClicked) {
+        setIsClicked(!isClicked);
+      }
+    }, 2000)
+  }, [isClicked])
 
-  const scrollTo = useContext(ScrollContext);
+  const buttonContent = isClicked ? "SOON" : "CONNECT WALLET";
 
   return (
     <header className="header">
@@ -28,7 +33,10 @@ const Header = () => {
           </a>
         </li>
         <li className="header__list_item">
-          <button className="header__link" onClick={handleClick}>
+          <button
+            className="header__link header__link--wallet" 
+            onClick={handleClick}
+          >
             {buttonContent}
           </button>
         </li>

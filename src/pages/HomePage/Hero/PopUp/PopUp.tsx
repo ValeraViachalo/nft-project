@@ -120,6 +120,7 @@ const PopUp = () => {
             animate={isOpen ? "open" : "closed"}
             initial="closed"
             className="pop_up__blur"
+            key={2}
           />
       </AnimatePresence>
     </div>
